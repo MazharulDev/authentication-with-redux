@@ -10,7 +10,7 @@ import img7 from "../../asset/img/mohammad-rahmani-8qEB0fTe9Vw-unsplash.jpg"
 const ImgSection = () => {
     return (
         <div>
-            <div className='grid grid-cols-4 gap-4'>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                 <img src={img1} alt="" />
                 <img src={img2} alt="" />
                 <img src={img3} alt="" />
