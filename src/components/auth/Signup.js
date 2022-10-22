@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const navigate = useNavigate()
     const users = useSelector(state => state.users)
     const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
+    const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const dispatch = useDispatch()
     const handleSignUp = () => {
@@ -14,12 +14,12 @@ const Signup = () => {
             type: "REGISTER",
             payload: {
                 name: name,
-                email: email,
+                userName: userName,
                 password: password
             }
         })
         if (users) {
-            navigate("/home")
+            navigate("/")
         }
     }
     return (
@@ -41,8 +41,8 @@ const Signup = () => {
                                         <label htmlFor="name" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Full Name</label>
                                     </div>
                                     <div className="relative">
-                                        <input onChange={(e) => setEmail(e.target.value)} autoComplete="off" id="email" name="email" type="email" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email address" />
-                                        <label htmlFor="email" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email Address</label>
+                                        <input onChange={(e) => setUserName(e.target.value)} autoComplete="off" id="email" name="email" type="text" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email address" />
+                                        <label htmlFor="email" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Username</label>
                                     </div>
                                     <div className="relative">
                                         <input onChange={(e) => setPassword(e.target.value)} autoComplete="off" id="password" name="password" type="password" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" />
@@ -50,6 +50,9 @@ const Signup = () => {
                                     </div>
                                     <div className="relative">
                                         <button onClick={handleSignUp} className="bg-blue-500 hover:bg-blue-700 text-white rounded-md px-2 py-1">Submit</button>
+                                    </div>
+                                    <div>
+                                        <p>Have an account? <Link to="/" className="text-blue-500">Login</Link> </p>
                                     </div>
                                 </div>
                             </div>

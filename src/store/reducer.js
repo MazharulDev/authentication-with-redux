@@ -1,7 +1,10 @@
 import { createStore } from "redux";
 
 const initialState = {
-    users: [],
+    users: [{
+        userName: "admin",
+        password: "Test12345"
+    }],
     loginUser: null,
     cart: []
 }
@@ -13,7 +16,16 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 users: [...state.users, action.payload]
             }
-
+        case "LOGIN":
+            return {
+                ...state,
+                user: action.payload
+            }
+        case "LOGOUT":
+            return {
+                ...state,
+                user: null
+            }
         default:
             return state;
     }
