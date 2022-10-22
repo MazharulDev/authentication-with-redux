@@ -1,11 +1,26 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+    const navigate = useNavigate()
+    const users = useSelector(state => state.users)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const dispatch = useDispatch()
     const handleSignUp = () => {
-        console.log(name, email, password);
+        dispatch({
+            type: "REGISTER",
+            payload: {
+                name: name,
+                email: email,
+                password: password
+            }
+        })
+        if (users) {
+            navigate("/home")
+        }
     }
     return (
         <div>

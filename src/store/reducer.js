@@ -3,23 +3,6 @@ import { createStore } from "redux";
 const initialState = {
     users: [],
     loginUser: null,
-    user: [
-        {
-            id: 1,
-            name: "Mazharul Islam",
-            email: "miforbd@gmail.com"
-        },
-        {
-            id: 2,
-            name: "Faisal",
-            email: "faisal@gmail.com"
-        },
-        {
-            id: 3,
-            name: "Maria Islam",
-            email: "maria@gmail.com"
-        }
-    ],
     cart: []
 }
 
